@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Burger & Cia - Delivery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-info">
+            <h1>Red Burger & Cia</h1>
+            <p>Aberto até 14:00 • Centro, Sua Cidade</p>
+        </div>
+    </header>
+
+    <div class="delivery-stats">
+        <div>
+            <div class="stats-title">Tempo estimado</div>
+            <div class="stats-value">30 - 45 min</div>
+        </div>
+        <div>
+            <div class="stats-title">Pedido mínimo</div>
+            <div class="stats-value">R$ 15,00</div>
+        </div>
+    </div>
+
+    <main class="menu-container" id="menu-container">
+        </main>
+
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-content">
+            <button class="modal-header-btn" onclick="closeModal()">X</button>
+            <img src="" alt="Produto" class="modal-img" id="modal-img">
+            
+            <div class="modal-body">
+                <h2 class="modal-title" id="modal-title">Nome do Produto</h2>
+                <p class="modal-desc" id="modal-desc">Descrição completa do produto.</p>
+                <div class="modal-price" id="modal-price">R$ 0,00</div>
+
+                <div class="obs-box">
+                    <label for="obs">Observações?</label>
+                    <textarea id="obs" placeholder="Ex: Tirar cebola, maionese à parte..."></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(-1)">-</button>
+                    <div class="qty-display" id="modal-qty">1</div>
+                    <button class="qty-btn" onclick="changeQty(1)">+</button>
+                </div>
+                <button class="add-btn" id="modal-add-btn" onclick="addToCart()">
+                    Adicionar R$ 0,00
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-floating-btn" class="cart-floating-btn" onclick="openCartModal()">
+        <div class="cart-btn-content">
+            <span>🛒 Ver Carrinho</span>
+            <span id="cart-btn-qty" class="cart-btn-qty">0</span>
+            <span id="cart-btn-total">R$ 0,00</span>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal-content">
+            <button class="modal-header-btn" onclick="closeCartModal()">X</button>
+            <div class="cart-header">
+                <h2>Seu Carrinho</h2>
+            </div>
+            
+            <div class="modal-body cart-body" id="cart-items-container">
+                </div>
+
+            <div class="modal-footer cart-footer">
+                <div class="cart-total-line">
+                    <span>Total do Pedido:</span>
+                    <span id="cart-modal-total">R$ 0,00</span>
+                </div>
+                <button class="add-btn" onclick="openCheckoutModal()">Continuar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-content">
+            <button class="modal-header-btn" onclick="closeCheckoutModal()">X</button>
+            <div class="cart-header">
+                <h2>Dados de Entrega</h2>
+            </div>
+            
+            <div class="modal-body checkout-body">
+                <label>Nome Completo*</label>
+                <input type="text" id="chk-nome" placeholder="Seu nome" required>
+
+                <label>Telefone / WhatsApp*</label>
+                <input type="tel" id="chk-telefone" placeholder="(91) 90000-0000" required>
+
+                <label>Bairro*</label>
+                <input type="text" id="chk-bairro" placeholder="Nome do bairro" required>
+
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 2;">
+                        <label>Rua*</label>
+                        <input type="text" id="chk-rua" placeholder="Nome da rua" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Número*</label>
+                        <input type="text" id="chk-numero" placeholder="Nº" required>
+                    </div>
+                </div>
+
+                <label>Complemento (Opcional)</label>
+                <input type="text" id="chk-complemento" placeholder="Apto, Bloco, Casa B...">
+
+                <label>Ponto de Referência (Opcional)</label>
+                <input type="text" id="chk-referencia" placeholder="Próximo a...">
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
+
+                <label>Forma de Pagamento*</label>
+                <div class="payment-options">
+                    <label><input type="radio" name="pagamento" value="Pix" checked> Pix</label>
+                    <label><input type="radio" name="pagamento" value="Dinheiro"> Dinheiro</label>
+                </div>
+
+                <div id="div-troco" class="conditional-field">
+                    <label>Troco para quanto?</label>
+                    <input type="text" id="chk-troco" placeholder="Ex: R$ 50,00">
+                </div>
+
+                <div id="div-pix" class="conditional-field" style="display: block;">
+                    <p style="font-size: 14px; margin-bottom: 5px;">A chave Pix será enviada junto com o pedido, mas se quiser adiantar:</p>
+                    <p class="pix-info">Chave Pix (CPF): 10702617261</p>
+                </div>
+
+            </div>
+
+            <div class="modal-footer cart-footer">
+                <button class="add-btn" onclick="sendWhatsAppOrder()">Enviar Pedido no WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+                  </html>
+                  
